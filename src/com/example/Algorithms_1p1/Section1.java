@@ -9,7 +9,7 @@ public class Section1 {
      */
     public static void main(String[] args) {
         //Define arbitrary array length to create set of values to run tests on.
-        int arrayLength = 1000;
+        int arrayLength = 1000000;
         double arbitraryArray[] = createTestArray(arrayLength);
 
         //for (int i = 0; i < arbitraryArray.length; i++) {
@@ -51,7 +51,8 @@ public class Section1 {
     private static double getAverage(double[] arrayOfValues) {
         double sum = 0.0;
         for (double i : arrayOfValues) {
-            sum += arrayOfValues[(int) i];
+            //since the for each loop uses the i as the actual value, no need to access the array again directly.
+            sum += i;
         }
         return (sum / arrayOfValues.length);
     }
@@ -92,6 +93,7 @@ public class Section1 {
         }
         return arrayOfValues;
     }
+    /** TODO: Try making the reversal method using an iterator instead of the above method to improve performance**/
 
     /**
      * This method is used for matrix multiplication
