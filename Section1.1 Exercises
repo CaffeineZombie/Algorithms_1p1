@@ -1,0 +1,168 @@
+This file contains my answers to the questions posed in section 1.1 Exercises and are open for critique and comment.
+
+1.1.1 Give the values of the following:	
+	a. ( 0 + 15) / 2
+		7
+	b. 2.0e-6 * 100000000.1
+		200.0000002
+	c. true && false || true && false
+		false
+		
+1.1.2 Give the type and value of each of the following expressions:
+	a. (1 + 2.236) / 2
+		int; 1
+	b. 1 + 2 + 3 + 4.0
+		int; 10
+	c. 4.1 >= 4
+		bool; true
+	d. 1 + 2 + "3"
+		String; 123
+		
+1.1.3 Write a program that takes three interger command-line arguments and prints equal if all three are equal, and not equal otherwise.
+
+		public static void (String[] args)
+		{
+			if (args[0].equals(args[1]) && args[0].equals(args[2]))
+			{
+				println("equal")
+			}
+			else
+			{
+				println("not equal")
+			}
+		}
+		
+1.1.4 What (if anything) is wrong with each of the following statements?
+	a. if (a > 0) then c = 0;
+		The 'then' operator is implied by the structure of the if statement and should be omitted. 
+	b. if a > b { c = 0; }
+		Logical comparison a>b should be surrounded by parentheses
+	c. if (a > b) c = 0;
+		No error, though personal preference is surrounding brackets around 'then' condition to avoid syntax errors in more complex nesting.
+	d. if ( a > b) c = 0 else b = 0;
+		Missing the semicolon after c = 0.
+		
+1.1.5 Write a code fragment the prints true if the double variables x and y are both strictly between 0 and 1, and false otherwise.
+
+		double min = 0.0;
+		double max = 1.0;
+		if ( (valueToTest > min) && (valueToTest < max) ){
+			println("true");
+		}
+		else {
+			println("false");
+		}
+			
+1.1.6 What does the following program print?
+	int f = 0;
+	int g = 1;
+	for (int i = 0; i <= 15; i++)
+	{
+		StdOut.println(f);
+		f = f + g;
+		g = f - g;
+	}
+		0
+		1
+		1
+		2
+		3
+		5
+		8
+		13
+		21
+		34
+		55
+		89
+		144
+		233
+		377
+		610
+	*The program will print 16 values from the fibonacci sequence
+	
+1.1.7 Give the value printed by each of the following code fragments:
+	a. 	double t = 9.0;
+		while(Math.abs(t-9.0/t) > .001)
+			t = (9.0/t + t) / 2.0;
+		StdOut.printf("%.5f\n",t);
+		
+			*note: due to structure od fragment, only print the last value that satisfied the while conditional (I missed this on the first go)
+			3.00009
+			
+	b. 	int sum = 0;
+		for (int i = 1; i < 1000; i++)
+			for( intj = 0; j < i; j++)
+				sum++;
+		StdOut.println(sum);
+		
+			sum variable will be summation 0...999 = 499500
+	
+	c. 	int sum = 0;
+		for (int i = 1; i < 1000; i *= 2)
+			for (int j = 0; j < 1000; j++)
+				sum++;
+		StdOut.println(sum);
+		
+			sum varible will be 1000 * 10 iterations (2^0 through 2^9)
+			
+1.1.8 What do each of the following print?
+	a. System.out.println('b');
+		b - println automatically casts as string.
+	b. System.out.println( 'b' + 'c');
+		*note: had incorrect answer initially. This statement will add the integer value of the 
+		characters b=66 c=67 printing 113
+	c. System.out.println((char) ('a' + 4));
+		*note:  had incorrect answer initially as well. The addition performed 
+		still occurs as the values of the characters as an int, and then is casted as a char, 
+		giving us (a = 65 + 4) = 69 -> to char resulting in 'e'
+		
+1.1.9 Write a code fragment that puts the binary representation of a positive integer N into a String s.
+
+	*PROVIDED SOLUTION
+	String s = "";
+	for (int n = N; n > 0; n /= 2)
+		s = (n % 2) + s;
+	
+		My solution:
+		String s = "";
+		int number = 10; //value passed into function
+		for ( int i = 0; Math.pow(2 , i) < number; i++)
+		{
+			if ((int) (number / Math.pow(2 , i)) % 2 == 0)
+				s = 0 + s;
+			else
+				s = 1 + s;
+		}
+			System.out.println(s);
+		*NOTE: This gave me difficulty in that the compiler was defining the result of 
+		the if logic check as a double. I had to explicitly cast the value as an int to remove 
+		the rounding that was causing errors.
+	
+1.1.10 What is wrong with the following code fragment?
+		int[] a;
+		for(int i = 0; i < 10; i++)
+			a[i] = i*i;
+		
+			The array a[] is never initialized with the new keyword nor given length. No memory allocation.
+			
+1.1.11 Write a code fragment that prints the contents of a two dimensional boolean array using * to 
+	represent true and a space to represent false. Include row and column numbers.
+	//in progress
+	bool[][] array = new bool[4][4];
+	String rowValues = "";
+	
+	for(int i = 0; i < array.length; i++)
+	{
+		rowValues += i;
+		for(int j = 0; j < array[i].length; i++)
+		{
+			if( array[i][j] == 1)
+				rowValues += *'
+			else
+				rowValues += " ";
+			System.out.println(rowValues);
+		}
+		rowValues = "";
+	}
+	
+	
